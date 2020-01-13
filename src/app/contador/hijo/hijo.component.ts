@@ -1,0 +1,33 @@
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+
+@Component({
+  selector: 'app-hijo',
+  templateUrl: './hijo.component.html',
+  styles: []
+})
+export class HijoComponent implements OnInit {
+
+  @Input() contadorHijo: number;
+  @Output() cambioContador = new EventEmitter<number>();
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  multiplicar(){
+    this.contadorHijo *=2;
+    this.cambioContador.emit(this.contadorHijo);
+  }
+
+  dividir(){
+    this.contadorHijo /=2;
+    this.cambioContador.emit(this.contadorHijo);
+  }
+
+  resetNieto(event){
+    this.contadorHijo = event;
+    this.cambioContador.emit(this.contadorHijo);
+  }
+
+}
